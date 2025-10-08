@@ -1,4 +1,4 @@
-# 🎓 Sistema Universitario UES (Universidad de El Salvador)
+# 🎓 Sistema Universitario UES (Universidad de Élite Suramericana)
 Ejercicio Academico Corporación Universitaria de Asturias
 Especialización en Desarrollo Web
 Patrones de Desarrollo de Software 
