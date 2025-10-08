@@ -1,0 +1,423 @@
+{
+  "info": {
+    "name": "UES - Sistema Universitario API Completa",
+    "description": "API completa para el sistema de gestión universitaria UES - Incluye todas las entidades",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔐 Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.data && responseJson.data.token) {",
+                  "        pm.collectionVariables.set('authToken', responseJson.data.token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@ues.edu.sv\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"nuevo@ues.edu.sv\",\n  \"password\": \"password123\",\n  \"nombre\": \"Usuario Nuevo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌍 Países",
+      "item": [
+        {
+          "name": "GET Todos los países",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/paises",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "paises"]
+            }
+          }
+        },
+        {
+          "name": "GET País por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/paises/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "paises", "1"]
+            }
+          }
+        },
+        {
+          "name": "POST Crear país",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"México\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/paises",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "paises"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏛️ Facultades",
+      "item": [
+        {
+          "name": "GET Todas las facultades",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/facultades",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "facultades"]
+            }
+          }
+        },
+        {
+          "name": "POST Crear facultad",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Facultad de Medicina\",\n  \"codigo\": \"FME\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/facultades",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "facultades"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👨‍🏫 Profesores",
+      "item": [
+        {
+          "name": "GET Todos los profesores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/profesores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profesores"]
+            }
+          }
+        },
+        {
+          "name": "POST Crear profesor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Dr. Juan Pérez\",\n  \"correo\": \"juan.perez@ues.edu.sv\",\n  \"telefono\": \"+503 2225-1234\",\n  \"paisId\": 1,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profesores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profesores"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👨‍🎓 Estudiantes",
+      "item": [
+        {
+          "name": "GET Todos los estudiantes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "estudiantes"]
+            }
+          }
+        },
+        {
+          "name": "GET Proyectos de estudiante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/estudiantes/1/proyectos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "estudiantes", "1", "proyectos"]
+            }
+          }
+        },
+        {
+          "name": "POST Crear estudiante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"María González\",\n  \"email\": \"maria.gonzalez@estudiante.ues.edu.sv\",\n  \"facultadId\": 1,\n  \"paisId\": 1,\n  \"fechaIngreso\": \"2024-02-15T00:00:00.000Z\",\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "estudiantes"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📚 Cursos",
+      "item": [
+        {
+          "name": "GET Todos los cursos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/cursos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cursos"]
+            }
+          }
+        },
+        {
+          "name": "GET Estudiantes de curso",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/cursos/1/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cursos", "1", "estudiantes"]
+            }
+          }
+        },
+        {
+          "name": "POST Crear curso",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Física I\",\n  \"codigo\": \"FIS101\",\n  \"facultadId\": 1,\n  \"profesorId\": 1,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cursos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cursos"]
+            }
+          }
+        },
+        {
+          "name": "POST Inscribir estudiante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estudianteId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cursos/1/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cursos", "1", "estudiantes"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🚀 Proyectos",
+      "item": [
+        {
+          "name": "GET Todos los proyectos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/proyectos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "proyectos"]
+            }
+          }
+        },
+        {
+          "name": "GET Estudiantes de proyecto",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/proyectos/1/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "proyectos", "1", "estudiantes"]
+            }
+          }
+        },
+        {
+          "name": "POST Asignar proyecto a curso",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cursoId\": 1,\n  \"nombre\": \"Sistema de Gestión de Biblioteca\",\n  \"descripcion\": \"Desarrollo de un sistema web para gestión de libros y préstamos\",\n  \"fechaInicio\": \"2024-03-01T00:00:00.000Z\",\n  \"fechaFinalizacion\": \"2024-07-15T00:00:00.000Z\",\n  \"estado\": \"En Progreso\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/proyectos/asignar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "proyectos", "asignar"]
+            }
+          }
+        },
+        {
+          "name": "POST Asignar estudiante a proyecto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estudianteId\": 1,\n  \"calificacion\": 8.5,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/proyectos/1/estudiantes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "proyectos", "1", "estudiantes"]
+            }
+          }
+        },
+        {
+          "name": "PUT Actualizar estudiante en proyecto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calificacion\": 9.0,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "proyectos", "1", "estudiantes", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

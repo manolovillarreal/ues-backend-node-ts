@@ -1,0 +1,80 @@
+[
+  {
+    "proyectoId": 1,
+    "estudianteId": 1,
+    "calificacion": 8.5,
+    "activo": true
+  },
+  {
+    "proyectoId": 1,
+    "estudianteId": 2,
+    "calificacion": 9.2,
+    "activo": true
+  },
+  {
+    "proyectoId": 1,
+    "estudianteId": 8,
+    "calificacion": 7.8,
+    "activo": true
+  },
+  {
+    "proyectoId": 2,
+    "estudianteId": 1,
+    "calificacion": 9.5,
+    "activo": true
+  },
+  {
+    "proyectoId": 2,
+    "estudianteId": 17,
+    "calificacion": 8.7,
+    "activo": true
+  },
+  {
+    "proyectoId": 3,
+    "estudianteId": 2,
+    "calificacion": 8.9,
+    "activo": true
+  },
+  {
+    "proyectoId": 3,
+    "estudianteId": 20,
+    "calificacion": 7.5,
+    "activo": true
+  },
+  {
+    "proyectoId": 4,
+    "estudianteId": 4,
+    "calificacion": 8.3,
+    "activo": true
+  },
+  {
+    "proyectoId": 4,
+    "estudianteId": 7,
+    "calificacion": 9.1,
+    "activo": true
+  },
+  {
+    "proyectoId": 4,
+    "estudianteId": 13,
+    "calificacion": 8.0,
+    "activo": true
+  },
+  {
+    "proyectoId": 5,
+    "estudianteId": 3,
+    "calificacion": 9.0,
+    "activo": true
+  },
+  {
+    "proyectoId": 5,
+    "estudianteId": 15,
+    "calificacion": 8.6,
+    "activo": true
+  },
+  {
+    "proyectoId": 5,
+    "estudianteId": 18,
+    "calificacion": 7.9,
+    "activo": false
+  }
+]

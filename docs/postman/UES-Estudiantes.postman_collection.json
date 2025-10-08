@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "UES - Estudiantes API",
+    "description": "API para gestión de estudiantes en el sistema universitario UES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Obtener todos los estudiantes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener estudiante por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener estudiantes por facultad",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/facultad/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "facultad", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener proyectos de un estudiante",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1/proyectos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1", "proyectos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener proyectos activos de un estudiante",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1/proyectos/activos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1", "proyectos", "activos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear nuevo estudiante",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"María González\",\n  \"email\": \"maria.gonzalez@estudiante.ues.edu.sv\",\n  \"facultadId\": 1,\n  \"paisId\": 1,\n  \"fechaIngreso\": \"2024-02-15T00:00:00.000Z\",\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar estudiante",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"María González Actualizada\",\n  \"email\": \"maria.gonzalez.updated@estudiante.ues.edu.sv\",\n  \"facultadId\": 1,\n  \"paisId\": 1,\n  \"fechaIngreso\": \"2024-02-15T00:00:00.000Z\",\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desactivar estudiante",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1/deactivate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1", "deactivate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar estudiante",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

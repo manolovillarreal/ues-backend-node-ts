@@ -1,0 +1,280 @@
+{
+  "info": {
+    "name": "UES - Proyectos API",
+    "description": "API para gestión de proyectos en el sistema universitario UES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Obtener todos los proyectos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener proyecto por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener proyectos por curso",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/curso/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "curso", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener proyectos activos por curso",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/curso/1/activos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "curso", "1", "activos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener estudiantes de un proyecto",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener estudiantes activos de un proyecto",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/activos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes", "activos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Asignar proyecto a curso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cursoId\": 1,\n  \"nombre\": \"Sistema de Gestión de Biblioteca\",\n  \"descripcion\": \"Desarrollo de un sistema web para gestión de libros y préstamos\",\n  \"fechaInicio\": \"2024-03-01T00:00:00.000Z\",\n  \"fechaFinalizacion\": \"2024-07-15T00:00:00.000Z\",\n  \"estado\": \"En Progreso\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/asignar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "asignar"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Asignar estudiante a proyecto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"estudianteId\": 1,\n  \"calificacion\": 8.5,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar relación estudiante-proyecto",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"calificacion\": 9.0,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Activar estudiante en proyecto",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/1/activar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes", "1", "activar"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desactivar estudiante en proyecto",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/1/desactivar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes", "1", "desactivar"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desasignar proyecto de curso",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/desasignar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "desasignar"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desasignar estudiante del proyecto",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar proyecto",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proyectos/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "proyectos", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

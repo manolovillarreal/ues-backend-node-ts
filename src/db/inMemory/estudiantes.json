@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "nombre": "Carlos Andrés Mejía",
+    "email": "carlos.mejia@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 1,
+    "fechaIngreso": "2022-02-15T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 2,
+    "nombre": "Ana Beatriz Flores",
+    "email": "ana.flores@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 1,
+    "fechaIngreso": "2021-08-20T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 3,
+    "nombre": "Luis Fernando Ramírez",
+    "email": "luis.ramirez@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 2,
+    "fechaIngreso": "2020-03-10T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 4,
+    "nombre": "María José Castillo",
+    "email": "maria.castillo@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 1,
+    "fechaIngreso": "2023-01-25T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 5,
+    "nombre": "Diego Alexander Morales",
+    "email": "diego.morales@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 3,
+    "fechaIngreso": "2022-07-12T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 6,
+    "nombre": "Sofía Gabriela Hernández",
+    "email": "sofia.hernandez@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 1,
+    "fechaIngreso": "2021-02-28T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 7,
+    "nombre": "Roberto Carlos Vásquez",
+    "email": "roberto.vasquez@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 4,
+    "fechaIngreso": "2020-09-05T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 8,
+    "nombre": "Claudia Marcela Rivas",
+    "email": "claudia.rivas@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 1,
+    "fechaIngreso": "2023-03-18T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 9,
+    "nombre": "Fernando Josué Pérez",
+    "email": "fernando.perez@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 5,
+    "fechaIngreso": "2022-01-10T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 10,
+    "nombre": "Paola Alejandra Santos",
+    "email": "paola.santos@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 1,
+    "fechaIngreso": "2021-05-22T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 11,
+    "nombre": "Mauricio Ernesto Cruz",
+    "email": "mauricio.cruz@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 6,
+    "fechaIngreso": "2020-11-08T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 12,
+    "nombre": "Karla Vanessa Molina",
+    "email": "karla.molina@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 1,
+    "fechaIngreso": "2023-02-14T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 13,
+    "nombre": "Alexis Javier Guzmán",
+    "email": "alexis.guzman@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 2,
+    "fechaIngreso": "2021-10-30T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 14,
+    "nombre": "Valeria Estefany López",
+    "email": "valeria.lopez@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 1,
+    "fechaIngreso": "2022-04-17T00:00:00.000Z",
+    "activo": false
+  },
+  {
+    "id": 15,
+    "nombre": "Óscar Manuel Rivera",
+    "email": "oscar.rivera@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 3,
+    "fechaIngreso": "2020-06-01T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 16,
+    "nombre": "Natalia Michelle Aguilar",
+    "email": "natalia.aguilar@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 1,
+    "fechaIngreso": "2023-01-12T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 17,
+    "nombre": "Andrés Felipe Jiménez",
+    "email": "andres.jimenez@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 4,
+    "fechaIngreso": "2021-12-05T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 18,
+    "nombre": "Isabella María Vargas",
+    "email": "isabella.vargas@estudiante.ues.edu.sv",
+    "facultadId": 2,
+    "paisId": 1,
+    "fechaIngreso": "2022-08-28T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 19,
+    "nombre": "Emilio José Campos",
+    "email": "emilio.campos@estudiante.ues.edu.sv",
+    "facultadId": 3,
+    "paisId": 5,
+    "fechaIngreso": "2020-12-19T00:00:00.000Z",
+    "activo": true
+  },
+  {
+    "id": 20,
+    "nombre": "Stephanie Cristina Orellana",
+    "email": "stephanie.orellana@estudiante.ues.edu.sv",
+    "facultadId": 1,
+    "paisId": 1,
+    "fechaIngreso": "2023-04-03T00:00:00.000Z",
+    "activo": true
+  }
+]

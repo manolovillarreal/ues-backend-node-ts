@@ -1,0 +1,150 @@
+{
+  "info": {
+    "name": "UES - Profesores API",
+    "description": "API para gestión de profesores en el sistema universitario UES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Obtener todos los profesores",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener profesor por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener profesores por país",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores/pais/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores", "pais", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear nuevo profesor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Dr. Juan Pérez\",\n  \"correo\": \"juan.perez@ues.edu.sv\",\n  \"telefono\": \"+503 2225-1234\",\n  \"paisId\": 1,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar profesor",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Dr. Juan Pérez Actualizado\",\n  \"correo\": \"juan.perez.updated@ues.edu.sv\",\n  \"telefono\": \"+503 2225-5678\",\n  \"paisId\": 1,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desactivar profesor",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores/1/deactivate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores", "1", "deactivate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar profesor",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/profesores/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profesores", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

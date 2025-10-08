@@ -1,0 +1,114 @@
+{
+  "info": {
+    "name": "UES - Países API",
+    "description": "API para gestión de países en el sistema universitario UES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Obtener todos los países",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/paises",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "paises"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener país por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/paises/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "paises", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear nuevo país",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"México\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/paises",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "paises"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar país",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"México Actualizado\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/paises/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "paises", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar país",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/paises/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "paises", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nombre": "Álgebra Lineal",
+    "codigo": "MAT101",
+    "facultadId": 1,
+    "profesorId": 1,
+    "activo": true
+  },
+  {
+    "id": 2,
+    "nombre": "Programación I",
+    "codigo": "INF101",
+    "facultadId": 1,
+    "profesorId": 3,
+    "activo": true
+  },
+  {
+    "id": 3,
+    "nombre": "Cálculo Diferencial",
+    "codigo": "MAT102",
+    "facultadId": 1,
+    "profesorId": 1,
+    "activo": true
+  },
+  {
+    "id": 4,
+    "nombre": "Estructura de Datos",
+    "codigo": "INF201",
+    "facultadId": 1,
+    "profesorId": 3,
+    "activo": true
+  },
+  {
+    "id": 5,
+    "nombre": "Base de Datos",
+    "codigo": "INF301",
+    "facultadId": 1,
+    "profesorId": 3,
+    "activo": true
+  },
+  {
+    "id": 6,
+    "nombre": "Literatura Contemporánea",
+    "codigo": "LIT201",
+    "facultadId": 2,
+    "profesorId": 2,
+    "activo": true
+  },
+  {
+    "id": 7,
+    "nombre": "Historia de El Salvador",
+    "codigo": "HIS101",
+    "facultadId": 2,
+    "profesorId": 4,
+    "activo": true
+  },
+  {
+    "id": 8,
+    "nombre": "Microeconomía",
+    "codigo": "ECO101",
+    "facultadId": 3,
+    "profesorId": 5,
+    "activo": true
+  },
+  {
+    "id": 9,
+    "nombre": "Contabilidad General",
+    "codigo": "CON101",
+    "facultadId": 3,
+    "profesorId": 5,
+    "activo": true
+  },
+  {
+    "id": 10,
+    "nombre": "Ingeniería de Software",
+    "codigo": "INF401",
+    "facultadId": 1,
+    "profesorId": 6,
+    "activo": false
+  }
+]

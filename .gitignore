@@ -1,0 +1,165 @@
+# 📁 Archivos compilados y distribución
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# 📦 Dependencias de Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 🔒 Archivos de configuración local y secretos
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# 🗄️ Bases de datos locales
+*.db
+*.sqlite
+*.sqlite3
+database.db
+data/
+
+# 📊 Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# 🔧 Archivos de configuración del IDE
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# 💻 Archivos específicos del sistema operativo
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ⚡ Cache y archivos temporales
+.npm
+.eslintcache
+.stylelintcache
+*.tgz
+*.tar.gz
+.cache/
+.parcel-cache/
+.nyc_output/
+.grunt/
+bower_components/
+.lock-wscript
+.wafpickle-*
+.node_repl_history
+*.seed
+*.pid.lock
+
+# 🧪 Testing y cobertura
+coverage/
+*.lcov
+.nyc_output/
+test-results/
+junit.xml
+
+# 📝 Documentación generada automáticamente
+docs/generated/
+typedoc/
+api-docs/
+
+# 🚀 Archivos de despliegue
+.serverless/
+.firebase/
+.vercel/
+.netlify/
+
+# ⚙️ Configuración específica del proyecto
+config/local.json
+config/production.json
+config/development.json
+
+# 🔄 Archivos de respaldo y temporales
+*.backup
+*.bak
+*.tmp
+*.temp
+.temp/
+temp/
+
+# 📱 React Native (si se extiende el proyecto)
+.expo/
+.expo-shared/
+
+# 🎯 TypeScript específico
+*.d.ts.map
+*.js.map
+
+# 🛠️ Herramientas de desarrollo
+.eslintrc.local.js
+.prettierrc.local
+webpack.config.local.js
+tsconfig.local.json
+
+# 📊 Análisis y profiling
+*.cpuprofile
+*.heapsnapshot
+
+# 🗂️ Archivos de configuración sensibles (ejemplos)
+secrets.json
+private-key.pem
+*.p12
+*.key
+*.crt
+*.pem
+
+# 🎨 Assets generados
+assets/generated/
+public/generated/
+
+# 📋 Archivos específicos del proyecto UES
+# (Descomentar si es necesario)
+# uploads/
+# temp-files/
+# user-data/

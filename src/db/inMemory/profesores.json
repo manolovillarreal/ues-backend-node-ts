@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nombre": "Dr. Carlos Alberto Mendoza",
+    "correo": "carlos.mendoza@ues.edu.sv",
+    "telefono": "+503 2225-1234",
+    "paisId": 1,
+    "activo": true
+  },
+  {
+    "id": 2,
+    "nombre": "Lic. María Elena Rodríguez",
+    "correo": "maria.rodriguez@ues.edu.sv",
+    "telefono": "+503 2225-5678",
+    "paisId": 1,
+    "activo": true
+  },
+  {
+    "id": 3,
+    "nombre": "Ing. José Antonio García",
+    "correo": "jose.garcia@ues.edu.sv",
+    "telefono": "+503 2225-9012",
+    "paisId": 1,
+    "activo": true
+  },
+  {
+    "id": 4,
+    "nombre": "Dra. Ana Sofía López",
+    "correo": "ana.lopez@ues.edu.sv",
+    "telefono": "+503 2225-3456",
+    "paisId": 2,
+    "activo": true
+  },
+  {
+    "id": 5,
+    "nombre": "Lic. Roberto Martínez",
+    "correo": "roberto.martinez@ues.edu.sv",
+    "telefono": "+503 2225-7890",
+    "paisId": 1,
+    "activo": true
+  },
+  {
+    "id": 6,
+    "nombre": "Ing. Patricia Hernández",
+    "correo": "patricia.hernandez@ues.edu.sv",
+    "telefono": "+503 2225-2468",
+    "paisId": 3,
+    "activo": false
+  }
+]

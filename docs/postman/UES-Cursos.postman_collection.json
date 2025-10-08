@@ -1,0 +1,244 @@
+{
+  "info": {
+    "name": "UES - Cursos API",
+    "description": "API para gestión de cursos en el sistema universitario UES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Obtener todos los cursos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener curso por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener cursos por facultad",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/facultad/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "facultad", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener cursos por profesor",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/profesor/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "profesor", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener estudiantes de un curso",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener cursos de un estudiante",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/estudiante/1/cursos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "estudiante", "1", "cursos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear nuevo curso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Física I\",\n  \"codigo\": \"FIS101\",\n  \"facultadId\": 1,\n  \"profesorId\": 1,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Inscribir estudiante en curso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"estudianteId\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1/estudiantes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar curso",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Física I Actualizada\",\n  \"codigo\": \"FIS101\",\n  \"facultadId\": 1,\n  \"profesorId\": 1,\n  \"activo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desactivar curso",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1/deactivate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1", "deactivate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Desinscribir estudiante del curso",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1/estudiantes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar curso",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
