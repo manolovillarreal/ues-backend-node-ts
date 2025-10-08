@@ -1,4 +1,8 @@
 # 🎓 Sistema Universitario UES (Universidad de El Salvador)
+Ejercicio Academico Corporación Universitaria de Asturias
+Especialización en Desarrollo Web
+Patrones de Desarrollo de Software 
+Caso Practico Unidad 1 - Introducción a los Patrones de Diseño
 
 Sistema de gestión universitaria desarrollado con **Node.js**, **TypeScript** y **Express**, implementando patrones de diseño avanzados y arquitectura limpia.
 
@@ -391,11 +395,6 @@ class CreateEstudianteDto {
 - **One-to-Many**: Facultad → Estudiantes
 - **One-to-Many**: Profesor → Cursos
 
-### **📊 Datos Realistas**
-- **Países sudamericanos** completos
-- **Facultades UES** reales (FIA, FCE, FCH)
-- **Nombres y emails** realistas
-- **Relaciones coherentes** entre entidades
 
 ### **🔧 Arquitectura Escalable**
 - **Separación de responsabilidades**
@@ -403,14 +402,6 @@ class CreateEstudianteDto {
 - **Interfaces bien definidas**
 - **Código mantenible y testeable**
 
-## 🤝 Contribución
-
-### **🚀 Cómo contribuir**
-1. Fork el repositorio
-2. Crear rama feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit cambios (`git commit -m 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Crear Pull Request
 
 ### **📋 Estándares de código**
 - **TypeScript strict mode** habilitado
@@ -424,13 +415,11 @@ class CreateEstudianteDto {
 - Validar casos edge
 - Documentar nuevos endpoints
 
-## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
 ## 👥 Autor
 
-**Sistema UES** - Desarrollado para la Universidad de El Salvador
+**Manuel Enrique Villarreal Arango** - Ingeniero Informatico y de Sistemas
 
 ---
 
@@ -439,13 +428,11 @@ Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detall
 - 📚 **Documentación completa**: `docs/`
 - 🧪 **Testing**: `docs/postman/README.md`
 - 🗄️ **Base de datos**: `docs/DATABASE_README.md`
-- 🐛 **Issues**: Reportar problemas en el repositorio
 
 ---
 
 <div align="center">
 
-**Desarrollado con ❤️ para la Universidad de El Salvador**
 
 ![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript&style=for-the-badge)
