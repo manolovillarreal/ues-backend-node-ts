@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": 1,
+    "nombre": "Sistema de Gestión Académica",
+    "descripcion": "Desarrollo de un sistema web para gestión de estudiantes, cursos y calificaciones",
+    "fechaInicio": "2024-02-01T00:00:00.000Z",
+    "fechaFinalizacion": "2024-06-15T00:00:00.000Z",
+    "estado": "En Progreso"
+  },
+  {
+    "id": 2,
+    "nombre": "Implementación de Árbol Binario de Búsqueda",
+    "descripcion": "Crear una biblioteca en Java para manejo de estructuras de datos tipo árbol",
+    "fechaInicio": "2024-03-01T00:00:00.000Z",
+    "fechaFinalizacion": "2024-05-30T00:00:00.000Z",
+    "estado": "Completado"
+  },
+  {
+    "id": 3,
+    "nombre": "Base de Datos para E-commerce",
+    "descripcion": "Diseño e implementación de una base de datos relacional para tienda en línea",
+    "fechaInicio": "2024-04-01T00:00:00.000Z",
+    "fechaFinalizacion": "2024-07-15T00:00:00.000Z",
+    "estado": "En Progreso"
+  },
+  {
+    "id": 4,
+    "nombre": "Análisis de Mercado Digital",
+    "descripcion": "Estudio económico del impacto de las redes sociales en el comercio local",
+    "fechaInicio": "2024-02-15T00:00:00.000Z",
+    "fechaFinalizacion": "2024-06-30T00:00:00.000Z",
+    "estado": "En Progreso"
+  },
+  {
+    "id": 5,
+    "nombre": "Documentación Histórica Digital",
+    "descripcion": "Digitalización y catalogación de documentos históricos de El Salvador",
+    "fechaInicio": "2024-01-10T00:00:00.000Z",
+    "fechaFinalizacion": "2024-08-10T00:00:00.000Z",
+    "estado": "En Progreso"
+  }
+]
