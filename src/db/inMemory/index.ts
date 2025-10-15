@@ -7,6 +7,9 @@ import proyectos from './proyectos.json' with { type: 'json' };
 import cursoEstudiantes from './cursoEstudiantes.json' with { type: 'json' };
 import estudianteProyectos from './estudianteProyectos.json' with { type: 'json' };
 
+import proyectosICCIS from './proyectosICCIS.json' with { type: 'json' };
+
+
 export const mockData = {
   paises,
   facultades,
@@ -15,7 +18,8 @@ export const mockData = {
   cursos,
   proyectos,
   cursoEstudiantes,
-  estudianteProyectos
+  estudianteProyectos,
+  proyectosICCIS
 };
 
 export {
@@ -26,5 +30,6 @@ export {
   cursos,
   proyectos,
   cursoEstudiantes,
-  estudianteProyectos
+  estudianteProyectos,
+  proyectosICCIS
 };
