@@ -298,6 +298,7 @@ Documentación completa: [`docs/postman/README.md`](docs/postman/README.md)
 │   │   ├── 📁 interfaces/       # Interfaces de servicios
 │   │   ├── 📁 impl/            # Implementaciones
 │   │   ├── 📄 ICCIS.service.ts  # Servicio sistema externo
+│   │   ├── 📄 asignacionCurso.service.ts # 🔔 Observer Pattern
 │   │   └── 📄 *.service.ts
 │   ├── 📁 repositories/         # Acceso a datos
 │   │   ├── 📁 in-memory/       # Implementación en memoria
@@ -308,6 +309,8 @@ Documentación completa: [`docs/postman/README.md`](docs/postman/README.md)
 │   │       └── 📄 ICCISAdapterMock.ts # Mock para desarrollo
 │   ├── 📁 proxys/               # 🛡️ Patrón Proxy
 │   │   └── 📄 ProyectoRepositoryProxy.ts # Proxy enriquecimiento
+│   ├── 📁 observers/            # 🔔 Patrón Observer
+│   │   └── 📄 notificarProfesorAsignado.ts # Observer notificaciones
 │   ├── 📁 builders/             # 🏗️ Builder Pattern
 │   │   ├── 📄 EstudianteBuilder.ts
 │   │   ├── 📄 ProfesorBuilder.ts
@@ -319,6 +322,7 @@ Documentación completa: [`docs/postman/README.md`](docs/postman/README.md)
 │   ├── 📁 models/              # Interfaces de entidades
 │   │   ├── 📄 Estudiante.ts
 │   │   ├── 📄 Profesor.ts
+│   │   ├── 📄 Observable.ts    # 🔔 Clase base Observer Pattern
 │   │   └── 📄 ...
 │   ├── 📁 middleware/          # Middleware personalizado
 │   │   ├── 📄 validateDto.ts
@@ -353,6 +357,85 @@ const estudiante = EstudianteBuilder
   .setFechaIngreso(new Date())
   .build();
 ```
+
+### **🔔 Patrones de Comportamiento**
+
+#### **🔔 Observer Pattern**
+Sistema de notificaciones para eventos del sistema universitario:
+
+**Clase Observable Base:**
+```typescript
+export class Observable<T> {
+  private observers: Array<(data: T) => void> = [];
+
+  suscribir(observer: (data: T) => void): void {
+    this.observers.push(observer);
+  }
+
+  desuscribir(observer: (data: T) => void): void {
+    this.observers = this.observers.filter(obs => obs !== observer);
+  }
+
+  notificar(data: T): void {
+    for (const observer of this.observers) {
+      observer(data);
+    }
+  }
+}
+```
+
+**Subject (Observado) - Servicio de Asignación:**
+```typescript
+export class AsignacionCursoService extends Observable<NotificacionProfesorDto> {
+  async asignarCurso(payload: AsignacionProfesorDto): Promise<void> {
+    // Validaciones y lógica de negocio...
+    
+    const profesorRetirado = (profesorActual && profesorActual.id !== profesor.id) 
+      ? profesorActual 
+      : undefined;
+
+    // Notificar a todos los observadores
+    this.notificar({
+      curso: existingCurso,
+      profesor: profesor,
+      profesorRetirado,
+    });
+  }
+}
+```
+
+**Observer - Función de Notificación:**
+```typescript
+export function notificarProfesorAsignado(event: NotificacionProfesorDto) {
+  const { curso, profesor, profesorRetirado } = event;
+  
+  console.log(
+    `Notificación: el profesor ${profesor.nombre} fue asignado al curso ${curso.nombre}.`
+  );
+
+  if (profesorRetirado) {
+    console.log(
+      `Notificación adicional: el profesor ${profesorRetirado.nombre} fue retirado del curso ${curso.nombre}.`
+    );
+  }
+}
+```
+
+**Uso del Pattern:**
+```typescript
+// Configuración del Observer
+const asignacionService = new AsignacionCursoService();
+asignacionService.suscribir(notificarProfesorAsignado);
+
+// Al ejecutar la asignación, se disparan automáticamente las notificaciones
+await asignacionService.asignarCurso({ cursoId: 1, profesorId: 2 });
+```
+
+**Beneficios del Observer Pattern:**
+- ✅ **Desacoplamiento**: Los observers no conocen la implementación del subject
+- ✅ **Extensibilidad**: Fácil agregar nuevos tipos de notificaciones
+- ✅ **Flexibilidad**: Múltiples observers pueden suscribirse al mismo evento
+- ✅ **Mantenibilidad**: Cambios en notificaciones no afectan la lógica de negocio
 
 ### **🏛️ Patrones Estructurales**
 
@@ -495,7 +578,13 @@ class CreateEstudianteDto {
 - **Caching inteligente**: Evita llamadas redundantes al sistema externo
 - **Degradación elegante**: Funciona aún si el sistema externo no está disponible
 
-### **🔧 Arquitectura Escalable**
+### **� Sistema de Notificaciones**
+- **Patrón Observer**: Notificaciones automáticas de eventos del sistema
+- **Desacoplamiento**: Los observers no conocen al subject y viceversa
+- **Extensibilidad**: Fácil adición de nuevos tipos de notificaciones
+- **Eventos del sistema**: Asignación/reasignación de profesores a cursos
+
+### **�🔧 Arquitectura Escalable**
 - **Separación de responsabilidades**
 - **Inyección de dependencias**
 - **Interfaces bien definidas**
