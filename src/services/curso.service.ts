@@ -10,23 +10,29 @@ import type { IProfesorRepository } from '../repositories/IProfesorRepository.js
 import { ProfesorRepositoryInMemory } from '../repositories/in-memory/ProfesorRepositoryInMemory.js';
 import type { IEstudianteRepository } from '../repositories/IEstudianteRepository.js';
 import { EstudianteRepositoryInMemory } from '../repositories/in-memory/EstudianteRepositoryInMemory.js';
+import { AsignacionCursoService } from './asignacionCurso.service.js';
+import { notificarProfesorAsignado } from '../observers/notificarProfesorAsignado.js';
 
 export class CursoService {
   private repo: ICursoRepository;
   private facultadRepo: IFacultadRepository;
   private profesorRepo: IProfesorRepository;
   private estudianteRepo: IEstudianteRepository;
+  private asignacionCursoService: AsignacionCursoService;
 
   constructor(
     repo?: ICursoRepository,
     facultadRepo?: IFacultadRepository,
     profesorRepo?: IProfesorRepository,
-    estudianteRepo?: IEstudianteRepository
+    estudianteRepo?: IEstudianteRepository,
+    asignacionCursoService?: AsignacionCursoService,
   ) {
     this.estudianteRepo = estudianteRepo ?? new EstudianteRepositoryInMemory();
     this.repo = repo ?? new CursoRepositoryInMemory(this.estudianteRepo);
     this.facultadRepo = facultadRepo ?? new FacultadRepositoryInMemory();
     this.profesorRepo = profesorRepo ?? new ProfesorRepositoryInMemory();
+    this.asignacionCursoService = asignacionCursoService ?? new AsignacionCursoService(); 
+    this.asignacionCursoService.suscribir(notificarProfesorAsignado);
   }
 
   async create(payload: CreateCursoDto): Promise<Curso> {
@@ -41,18 +47,7 @@ export class CursoService {
     if (!facultad) {
       throw new Error('La facultad especificada no existe');
     }
-
-    // Validar que el profesor exista (relación ManyToOne)
-    const profesor = await this.profesorRepo.findById(payload.profesorId);
-    if (!profesor) {
-      throw new Error('El profesor especificado no existe');
-    }
-
-    // Validar que el profesor esté activo
-    if (!profesor.activo) {
-      throw new Error('El profesor especificado no está activo');
-    }
-
+    
     return this.repo.create(payload);
   }
 

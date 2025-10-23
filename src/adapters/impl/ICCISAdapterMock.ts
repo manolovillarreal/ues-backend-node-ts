@@ -1,3 +1,5 @@
+
+
 import { proyectosICCIS as proyectosICCISMock } from '../../db/inMemory/index.js';
 import type { IHttpAdapter } from '../IHttpAdapter.js';
 
@@ -24,3 +26,4 @@ export class ICCISAdapterMock implements IHttpAdapter {
     throw { response: { status: 404 } };
   }
 }
+

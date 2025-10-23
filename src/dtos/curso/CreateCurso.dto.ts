@@ -12,9 +12,6 @@ export class CreateCursoDto {
   @IsNumber()
   facultadId!: number;
 
-  @IsNumber()
-  profesorId!: number;
-
   @IsOptional()
   @IsBoolean()
   activo?: boolean;

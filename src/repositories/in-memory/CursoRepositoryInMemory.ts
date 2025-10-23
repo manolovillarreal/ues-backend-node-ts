@@ -94,6 +94,13 @@ export class CursoRepositoryInMemory implements ICursoRepository {
     return true;
   }
 
+  async asignarProfesor(cursoId: number, profesorId: number): Promise<void> {
+    const index = this.cursos.findIndex(c => c.id === cursoId); 
+    if (index === -1) {
+      throw new Error('Curso no encontrado');
+    } 
+    this.cursos[index]!.profesorId = profesorId;
+  }
   // Relación ManyToMany con Estudiantes
   async inscribirEstudiante(cursoId: number, estudianteId: number): Promise<CursoEstudiante> {
     const cursoEstudiante: CursoEstudiante = {

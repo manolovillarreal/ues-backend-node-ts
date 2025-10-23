@@ -15,6 +15,7 @@ export interface ICursoRepository {
   delete(id: number): Promise<boolean>;
 
   // Relación ManyToMany con Estudiantes
+  asignarProfesor(cursoId: number, profesorId: number): Promise<void>;
   inscribirEstudiante(cursoId: number, estudianteId: number): Promise<CursoEstudiante>;
   desinscribirEstudiante(cursoId: number, estudianteId: number): Promise<boolean>;
   getEstudiantesByCurso(cursoId: number): Promise<Estudiante[]>;

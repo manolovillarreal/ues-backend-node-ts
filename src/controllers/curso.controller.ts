@@ -2,18 +2,21 @@ import type { Request, Response } from 'express';
 import { CursoService } from '../services/curso.service.js';
 import type { CreateCursoDto ,UpdateCursoDto} from '../dtos/curso/index.js';
 import type { RespuestaAPI } from '../models/RespuestaAPI.js';
+import { AsignacionCursoService } from '../services/asignacionCurso.service.js';
 
 export class CursoController {
-  private service: CursoService;
+  private cursoService: CursoService;
+  private asignacionCursoService: AsignacionCursoService;
 
-  constructor(service?: CursoService) {
-    this.service = service ?? new CursoService();
+  constructor(service?: CursoService, asignacionService?: AsignacionCursoService) {
+    this.cursoService = service ?? new CursoService();
+    this.asignacionCursoService = asignacionService ?? new AsignacionCursoService();
   }
 
   async create(req: Request, res: Response): Promise<void> {
     try {
       const payload = req.body as CreateCursoDto;
-      const curso = await this.service.create(payload);
+      const curso = await this.cursoService.create(payload);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -34,7 +37,7 @@ export class CursoController {
 
   async findAll(req: Request, res: Response): Promise<void> {
     try {
-      const cursos = await this.service.findAll();
+      const cursos = await this.cursoService.findAll();
       
       const response: RespuestaAPI = {
         ok: true,
@@ -56,7 +59,7 @@ export class CursoController {
   async findById(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id!);
-      const curso = await this.service.findById(id);
+      const curso = await this.cursoService.findById(id);
       
       if (!curso) {
         const response: RespuestaAPI = {
@@ -87,7 +90,7 @@ export class CursoController {
   async findByFacultadId(req: Request, res: Response): Promise<void> {
     try {
       const facultadId = parseInt(req.params.facultadId!);
-      const cursos = await this.service.findByFacultadId(facultadId);
+      const cursos = await this.cursoService.findByFacultadId(facultadId);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -109,7 +112,7 @@ export class CursoController {
   async findByProfesorId(req: Request, res: Response): Promise<void> {
     try {
       const profesorId = parseInt(req.params.profesorId!);
-      const cursos = await this.service.findByProfesorId(profesorId);
+      const cursos = await this.cursoService.findByProfesorId(profesorId);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -132,7 +135,7 @@ export class CursoController {
     try {
       const id = parseInt(req.params.id!);
       const payload = req.body as UpdateCursoDto;
-      const curso = await this.service.update(id, payload);
+      const curso = await this.cursoService.update(id, payload);
       
       if (!curso) {
         const response: RespuestaAPI = {
@@ -163,7 +166,7 @@ export class CursoController {
   async delete(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id!);
-      const deleted = await this.service.delete(id);
+      const deleted = await this.cursoService.delete(id);
       
       if (!deleted) {
         const response: RespuestaAPI = {
@@ -190,13 +193,35 @@ export class CursoController {
     }
   }
 
+  async asignarProfesor(req: Request, res: Response): Promise<void> {
+    try {
+      const cursoId = parseInt(req.params.id!);
+      const { profesorId } = req.body; 
+      await this.asignacionCursoService.asignarCurso({ cursoId, profesorId });
+
+      const response: RespuestaAPI = {
+        ok: true,
+        message: 'Profesor asignado al curso exitosamente',
+      };
+
+      res.status(200).json(response);
+    } catch (error: any) {
+      const response: RespuestaAPI = {
+        ok: false,
+        message: error.message || 'Error interno del servidor'
+      };
+
+      res.status(500).json(response);
+    }
+  }
+
   // Métodos para relación ManyToMany
   async inscribirEstudiante(req: Request, res: Response): Promise<void> {
     try {
       const cursoId = parseInt(req.params.id!);
       const { estudianteId } = req.body;
       
-      const inscripcion = await this.service.inscribirEstudiante(cursoId, estudianteId);
+      const inscripcion = await this.cursoService.inscribirEstudiante(cursoId, estudianteId);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -220,7 +245,7 @@ export class CursoController {
       const cursoId = parseInt(req.params.id!);
       const estudianteId = parseInt(req.params.estudianteId!);
       
-      const desinscrito = await this.service.desinscribirEstudiante(cursoId, estudianteId);
+      const desinscrito = await this.cursoService.desinscribirEstudiante(cursoId, estudianteId);
       
       if (!desinscrito) {
         const response: RespuestaAPI = {
@@ -250,7 +275,7 @@ export class CursoController {
   async getEstudiantesByCurso(req: Request, res: Response): Promise<void> {
     try {
       const cursoId = parseInt(req.params.id!);
-      const estudiantes = await this.service.getEstudiantesByCurso(cursoId);
+      const estudiantes = await this.cursoService.getEstudiantesByCurso(cursoId);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -272,7 +297,7 @@ export class CursoController {
   async getCursosByEstudiante(req: Request, res: Response): Promise<void> {
     try {
       const estudianteId = parseInt(req.params.estudianteId!);
-      const cursos = await this.service.getCursosByEstudiante(estudianteId);
+      const cursos = await this.cursoService.getCursosByEstudiante(estudianteId);
       
       const response: RespuestaAPI = {
         ok: true,
@@ -294,7 +319,7 @@ export class CursoController {
   async deactivate(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id!);
-      const curso = await this.service.deactivate(id);
+      const curso = await this.cursoService.deactivate(id);
       
       if (!curso) {
         const response: RespuestaAPI = {

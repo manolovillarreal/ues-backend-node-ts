@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { CursoController } from '../controllers/curso.controller.js';
 import { validateDto } from '../middleware/validateDto.js';
 import { CreateCursoDto,UpdateCursoDto} from '../dtos/curso/index.js';
+import { AsignacionProfesorDto } from '../dtos/curso/AsignacionProfesor.dto.js';
 
 const router = Router();
 const controller = new CursoController();
@@ -31,6 +32,11 @@ router.put('/:id',
   (req, res) => controller.update(req, res)
 );
 
+router.put('/:id/asignarProfesor/',
+  validateDto(AsignacionProfesorDto),
+  (req, res) => controller.asignarProfesor(req, res)
+);
+
 // PATCH /api/cursos/:id/deactivate - Desactivar curso
 router.patch('/:id/deactivate', (req, res) => controller.deactivate(req, res));
 
@@ -52,5 +58,6 @@ router.get('/:id/estudiantes', (req, res) => controller.getEstudiantesByCurso(re
 
 // GET /api/cursos/estudiante/:estudianteId/cursos - Obtener cursos de un estudiante
 router.get('/estudiante/:estudianteId/cursos', (req, res) => controller.getCursosByEstudiante(req, res));
+
 
 export { router as cursoRoutes };

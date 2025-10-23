@@ -297,11 +297,18 @@ Documentación completa: [`docs/postman/README.md`](docs/postman/README.md)
 │   ├── 📁 services/             # Lógica de negocio
 │   │   ├── 📁 interfaces/       # Interfaces de servicios
 │   │   ├── 📁 impl/            # Implementaciones
+│   │   ├── 📄 ICCIS.service.ts  # Servicio sistema externo
 │   │   └── 📄 *.service.ts
 │   ├── 📁 repositories/         # Acceso a datos
 │   │   ├── 📁 in-memory/       # Implementación en memoria
 │   │   └── 📄 I*.repository.ts  # Interfaces
-│   ├── 📁 builders/             # Builder Pattern
+│   ├── 📁 adapters/             # 🔌 Patrón Adapter
+│   │   ├── 📄 IHttpAdapter.ts   # Interfaz adaptador HTTP
+│   │   └── 📁 impl/
+│   │       └── 📄 ICCISAdapterMock.ts # Mock para desarrollo
+│   ├── 📁 proxys/               # 🛡️ Patrón Proxy
+│   │   └── 📄 ProyectoRepositoryProxy.ts # Proxy enriquecimiento
+│   ├── 📁 builders/             # 🏗️ Builder Pattern
 │   │   ├── 📄 EstudianteBuilder.ts
 │   │   ├── 📄 ProfesorBuilder.ts
 │   │   └── 📄 ...
@@ -335,7 +342,9 @@ Documentación completa: [`docs/postman/README.md`](docs/postman/README.md)
 
 ## 🔧 Patrones Implementados
 
-### **🏗️ Builder Pattern**
+### **🏗️ Patrones Creacionales**
+
+#### **Builder Pattern**
 Construcción fluida de objetos complejos:
 ```typescript
 const estudiante = EstudianteBuilder
@@ -345,7 +354,86 @@ const estudiante = EstudianteBuilder
   .build();
 ```
 
-### **🗄️ Repository Pattern**
+### **🏛️ Patrones Estructurales**
+
+#### **🔌 Adapter Pattern**
+Integración con sistemas externos (ICCIS) mediante adaptadores HTTP:
+
+**Interfaz del Adaptador:**
+```typescript
+export interface IHttpAdapter {
+  get<T>(url: string): Promise<T>;
+  post<T>(url: string, data: any): Promise<T>;
+  put<T>(url: string, data: any): Promise<T>;
+  delete<T>(url: string): Promise<void>;
+}
+```
+
+**Implementación Mock para Desarrollo:**
+```typescript
+export class ICCISAdapterMock implements IHttpAdapter {
+  async get<T>(url: string): Promise<T> {
+    // Simula llamadas HTTP al sistema ICCIS
+    const match = url.match(/\/proyectos\/(\d+)/);
+    if (match) {
+      const proyecto = proyectosICCISMock.find(p => 
+        p.id === parseInt(match[1] || '0')
+      );
+      return proyecto as T;
+    }
+    throw { response: { status: 404 } };
+  }
+}
+```
+
+**Uso en el Servicio:**
+```typescript
+export class ICCISService {
+  constructor(httpAdapter?: IHttpAdapter) {
+    this.httpAdapter = httpAdapter ?? new ICCISAdapterMock();
+  }
+
+  async getProyectoById(proyectoId: number): Promise<any> {
+    return await this.httpAdapter.get(
+      `${API_BASE_URL}/proyectos/${proyectoId}`
+    );
+  }
+}
+```
+
+#### **🛡️ Proxy Pattern**
+Control de acceso y enriquecimiento de datos para proyectos:
+
+```typescript
+export class ProyectoRepositoryProxy implements IProyectoRepository {
+  constructor(
+    private readonly innerRepository: IProyectoRepository,
+    private readonly iccisService: ICCISService
+  ) {}
+
+  // Intercepta consultas y enriquece datos
+  async findById(id: number): Promise<Proyecto | null> {
+    const proyecto = await this.innerRepository.findById(id);
+    if (!proyecto) return null;
+    
+    return await this.enriquecerProyecto(proyecto);
+  }
+
+  private async enriquecerProyecto(proyecto: Proyecto): Promise<Proyecto> {
+    try {
+      const dataICCIS = await this.iccisService.getProyectoById(proyecto.id);
+      return { ...proyecto, ...dataICCIS };
+    } catch {
+      console.warn(`No se pudo obtener información del proyecto ICCIS`);
+      return proyecto;
+    }
+  }
+}
+```
+
+### **🏗️ Patrones Arquitecturales**
+
+#### **🗄️ Repository Pattern**
 Abstracción del acceso a datos:
 ```typescript
 interface IEstudianteRepository {
@@ -355,7 +443,7 @@ interface IEstudianteRepository {
 }
 ```
 
-### **💼 Service Layer Pattern**
+#### **💼 Service Layer Pattern**
 Lógica de negocio centralizada:
 ```typescript
 class EstudianteService {
@@ -367,7 +455,7 @@ class EstudianteService {
 }
 ```
 
-### **🔄 DTO Pattern**
+#### **🔄 DTO Pattern**
 Transferencia de datos tipada:
 ```typescript
 class CreateEstudianteDto {
@@ -384,6 +472,8 @@ class CreateEstudianteDto {
 
 ## 🌟 Características Avanzadas
 
+## 🌟 Características Avanzadas
+
 ### **🛡️ Validaciones Robustas**
 - **class-validator** para validación automática
 - **Validaciones de integridad referencial**
@@ -395,6 +485,15 @@ class CreateEstudianteDto {
 - **One-to-Many**: Facultad → Estudiantes
 - **One-to-Many**: Profesor → Cursos
 
+### **🏛️ Integración con Sistemas Externos**
+- **Patrón Adapter**: Abstrae la comunicación HTTP con el sistema ICCIS
+- **Intercambiabilidad**: Fácil cambio entre implementaciones mock y reales
+- **Tolerancia a fallos**: Manejo graceful de errores de conectividad
+
+### **🛡️ Enriquecimiento de Datos**
+- **Patrón Proxy**: Transparente enriquecimiento de proyectos con datos ICCIS
+- **Caching inteligente**: Evita llamadas redundantes al sistema externo
+- **Degradación elegante**: Funciona aún si el sistema externo no está disponible
 
 ### **🔧 Arquitectura Escalable**
 - **Separación de responsabilidades**
